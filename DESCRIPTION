@@ -1,0 +1,35 @@
+Package: toolboxApps
+Title: Functions used for build shiny apps for SNO-Tourbières
+Version: 1.0
+Authors@R: 
+    person(given = "Jean-Baptiste",
+           family = "Paroissien",
+           role = c("aut", "cre"),
+           email = "jean-baptiste.paroissien@cnrs-orleans.fr",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    DBI,
+    RPostgreSQL,
+    data.table,
+    dplyr,
+    dygraphs,
+    ggplot2,
+    ggtern,
+    httr,
+    leaflet,
+    plotly,
+    pool,
+    readr,
+    reshape,
+    shiny,
+    stringr,
+    suncalc,
+    wesanderson,
+    xts,
+    yaml
