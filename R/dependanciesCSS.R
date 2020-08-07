@@ -1,26 +1,3 @@
-# Ensemble des fonctions CSS, Javascript et ggplot2 pour la mise en forme de l'appli
-#' @title googleAnalyticsParameter
-#' @description googleAnalytics paramters 
-#' @return String of java script
-#' @examples
-#' \dontrun{
-#' googleAnalyticsParameter()
-#' }
-#' @export
-# 
-
-googleAnalyticsParameter <- function(){
-'<!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143674771-1"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag(\'js\', new Date());
-        gtag(\'set\',\'cookie_expires\',395*24*60*60); //Mesure RGPD : IP anonymisées et cookies réduit à 13mois max de conservation
-        gtag(\'config\', \'UA-143674771-1\');
-        </script>'
-}
-
 #' @title tweaks
 #' @description Align checkboxs on multiple columns
 #' @source https://stackoverflow.com/questions/36898492/aligning-checkbox-elements-in-many-coumns-in-a-shiny-app
@@ -64,31 +41,6 @@ tweaks2 <- function(){
                             margin-top: 0px !important;
                             -webkit-margin-after: 0px !important; 
                             }"
-}
-
-#' @title appCSS
-#' @description CSS loading content MultiColumn in dygraph
-#' @return String of css configuration
-#' @examples
-#' \dontrun{
-#' appCSS()
-#' }
-#' @export
-appCSS <- function(){
-"
-  #loading-content {
-    position: absolute;
-    padding: 0 0 0 0;
-    background: #FFFFFF;
-    opacity: 0.9;
-    z-index: 100;
-    left: 0;
-    right: 0;
-    height: 100%;
-    text-align: center;
-    color: #333;
-  }
-  "
 }
 
 #' @title dyMultiColumn
