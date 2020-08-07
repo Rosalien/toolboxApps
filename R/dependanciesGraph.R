@@ -214,6 +214,7 @@ if(nrow(subsetoutbd)==0){
 #' @importFrom plotly ggplotly layout
 #' @import ggplot2
 #' @export
+
 timelineDataAvailable <- function(tableCarac,allSite,facetWrapOption,translator){
   keyWord <- c("Soil temperature","Soil water content","Soil heat flux","Température du sol","Teneur en eau du sol","Flux de chaleur dans le sol")
   keyWord <- paste(keyWord,collapse = "|")
