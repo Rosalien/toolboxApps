@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "jean-baptiste.paroissien@cnrs-orleans.fr",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: Functions used for build shiny apps for SNO-Tourbières
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
