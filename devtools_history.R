@@ -8,3 +8,4 @@ sapply(listpaquets,usethis::use_package)
 # Ignore these files
 usethis::use_build_ignore("devtools_history.R")
 usethis::use_build_ignore("Readme.md")
+git remote add origin https://github.com/Rosalien/toolboxApps.git
