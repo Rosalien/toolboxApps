@@ -40,7 +40,7 @@ createLink <- function(val) {
 #' 
 variableToVariableSimple <- function(x){
   y <- str_replace_all(x, "[[:punct:]]", "")
-  y <- str_replace_all(y , "[[1-9+]]", "")
+  y <- str_replace_all(y , "[[0-9+]]", "")
   y
 }
 
