@@ -1,6 +1,6 @@
 Package: toolboxApps
 Title: Functions used for build shiny apps for SNO-Tourbières
-Version: 1.0
+Version: 1.1
 Authors@R: 
     person(given = "Jean-Baptiste",
            family = "Paroissien",

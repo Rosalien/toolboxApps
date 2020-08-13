@@ -216,16 +216,16 @@ if(nrow(subsetoutbd)==0){
 #' @export
 
 timelineDataAvailable <- function(tableCarac,allSite,facetWrapOption,translator){
-  keyWord <- c("Soil temperature","Soil water content","Soil heat flux","Température du sol","Teneur en eau du sol","Flux de chaleur dans le sol")
-  keyWord <- paste(keyWord,collapse = "|")
-  tableCarac[,definition_simple:=ifelse(grepl(keyWord, definition)==TRUE,gsub(paste0("(",keyWord,").*"),"\\1",definition),definition)]
+ # keyWord <- c("Soil temperature","Soil water content","Soil heat flux","Température du sol","Teneur en eau du sol","Flux de chaleur dans le sol")
+#  keyWord <- paste(keyWord,collapse = "|")
+  #tableCarac[,definition_simple:=ifelse(grepl(keyWord, definition)==TRUE,gsub(paste0("(",keyWord,").*"),"\\1",definition),definition)]
 
 # Build ggplot chart
 gg <- ggplot(unique(tableCarac),aes(colour=theme,text = 
                                                 paste('<br>Begin:', mindate,
                                                       '<br>End: ', maxdate,
                                                       '<br>Variable: ', definition_simple)))+
-      geom_segment(aes(x=mindate, xend=maxdate, y=variable, yend=variable),size=1)+
+      geom_segment(aes(x=mindate, xend=maxdate, y=variable_simple, yend=variable_simple),size=1)+
       labs(fill="",x="",y = "")+
       scale_colour_manual(values=wes_palette("Darjeeling1",length(unique(tableCarac$theme)),type="discrete"),name=translator$t("Thème")) +
       scale_x_date(date_breaks = "2 year", date_labels = "%Y") +
