@@ -125,18 +125,18 @@ dbselect <- function(db,dayNightSelected,frequenceSelected,siteSelected,variable
      subsetoutbd[,Date:=as.POSIXct(paste(date,time,sep=" "), "%Y-%m-%d %H:%M:%S",tz="Africa/Algiers")]
    }else if(grepl("hour",frequenceSelected)==TRUE){  
     db[,Date:=cut(as.POSIXct(paste(date,time,sep=" "), "%Y-%m-%d %H:%M:%S",tz="Africa/Algiers"),frequenceSelected)]
-    subsetoutbd <- db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected!="P_1_1_1"],.(value = mean(value,na.rm=TRUE)), by = list(Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight),]#sunrise,sunset
-    subsetoutbd <- rbind(subsetoutbd,db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected=="P_1_1_1"] & complete.cases(db$value),.(value = sum(value,na.rm=TRUE)), by = list(Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight)])#,sunrise,sunset
+    subsetoutbd <- db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected!="P_1_1_1"],.(value = mean(value,na.rm=TRUE),countValue=length(value)), by = list(Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight),]#sunrise,sunset
+    subsetoutbd <- rbind(subsetoutbd,db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected=="P_1_1_1"] & complete.cases(db$value),.(value = sum(value,na.rm=TRUE),countValue=length(value)), by = list(Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight)])#,sunrise,sunset
     subsetoutbd[,Date:=as.POSIXct(Date, "%Y-%m-%d %H:%M:%S",tz="Africa/Algiers")]
    }else if((grepl("day",frequenceSelected))|(grepl("week",frequenceSelected))){
     db[,Date:=cut(as.POSIXct(paste(date,time,sep=" "), "%Y-%m-%d",tz="Africa/Algiers"),frequenceSelected)]
-    subsetoutbd <- db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected!="P_1_1_1"],.(value = mean(value,na.rm=TRUE)), by = list(date=Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight)]
-    subsetoutbd <- rbind(subsetoutbd,db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected=="P_1_1_1"] & complete.cases(db$value),.(value = sum(value,na.rm=TRUE)), by = list(date=Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight)])
+    subsetoutbd <- db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected!="P_1_1_1"],.(value = mean(value,na.rm=TRUE),countValue=length(value)), by = list(date=Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight)]
+    subsetoutbd <- rbind(subsetoutbd,db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected=="P_1_1_1"] & complete.cases(db$value),.(value = sum(value,na.rm=TRUE),countValue=length(value)), by = list(date=Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight)])
     subsetoutbd[,Date:= as.POSIXct(date, "%Y-%m-%d",tz="Africa/Algiers")]
    }else if(grepl("month",frequenceSelected)|grepl("year",frequenceSelected)){
     db[,Date:=cut(as.POSIXct(paste(date,time,sep=" "),tz="Africa/Algiers"),frequenceSelected)]
-    subsetoutbd <- db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected!="P_1_1_1"],.(value = mean(value,na.rm=TRUE)), by = list(date=Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight)]
-    subsetoutbd <- rbind(subsetoutbd,db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected=="P_1_1_1"] & complete.cases(db$value),.(value = sum(value,na.rm=TRUE)), by = list(date=Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight)])
+    subsetoutbd <- db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected!="P_1_1_1"],.(value = mean(value,na.rm=TRUE),countValue=length(value)), by = list(date=Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight)]
+    subsetoutbd <- rbind(subsetoutbd,db[code_site_station %in% siteSelected & variable %in% variableSelected[variableSelected=="P_1_1_1"] & complete.cases(db$value),.(value = sum(value,na.rm=TRUE),countValue=length(value)), by = list(date=Date,variable,code_site_station,unite,definition,station_description,site_description,station_nom,site_nom,dayNight)])
     subsetoutbd[,Date:= as.POSIXct(as.Date(date,"%Y-%m-%d"),tz="Africa/Algiers")]
    }else{}
 
